@@ -5,7 +5,10 @@ document.getElementById('Tocar')
 
 function tocar() {
     const song = document.getElementById("input").value
-    console.log("Música", song)
+    if (song !== '') {
+        let songArray = song.split('');
+        playComposition(songArray);
+    }
 }
 
 
@@ -24,5 +27,15 @@ function playSound(sound) {
 
         }, 300)
     }
+}
+function playComposition(songArray) {
+    let time = 0;
 
+
+    for (let songItem of songArray) {
+        setTimeout(() => {
+            playSound(`key${songItem}`);
+        }, time);
+        time += 270;
+    }
 }
